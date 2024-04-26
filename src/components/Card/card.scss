@@ -1,0 +1,37 @@
+@use '../../variable.scss' as *;
+
+.card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 100%;
+    cursor: pointer;
+
+    .card__icon{
+        margin-right: 12px;
+    }
+
+    .card__text{
+        font-size: 15px;
+        margin-bottom: 3.3px;
+    }
+}
+
+.card--red{
+    border: 1px solid #de52464d;
+
+    &:hover{
+        border: 1.5px solid #c634274d;
+    }
+}
+
+.card--blue{
+    border: 1px solid #05a6f04d;
+
+    &:hover{
+        border: 1.5px solid #0187c64d;
+    }
+}
