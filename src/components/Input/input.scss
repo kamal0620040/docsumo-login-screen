@@ -9,6 +9,7 @@
     }
 
     .input__box{
+        box-sizing: border-box;
         padding: 11px 16px;
         width: 100%;
         border: 1px solid $input-border;
@@ -36,7 +37,7 @@
         position: absolute;
         height: 100%;
         top: 0;
-        right: -15px;
+        right: 9px;
         padding-right: 0px;
     }
     
