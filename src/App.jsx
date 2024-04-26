@@ -1,7 +1,9 @@
+import Login from "./pages/Login/login"
+
 function App() {
   return (
     <>
-      Hello World!!d
+      <Login />
     </>
   )
 }
