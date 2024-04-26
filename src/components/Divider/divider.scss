@@ -1,0 +1,24 @@
+@use '../../variable.scss' as *;
+
+.divider{
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    color: $grey;
+
+    &::before{
+        flex: 1;
+        content: '';
+        padding: 0.1px;
+        background-color: $faint-grey;
+        margin: 15px 15px 15px 0;
+    }
+
+    &::after {
+        flex: 1;
+        content: '';
+        padding: 0.1px;
+        background-color: $faint-grey;
+        margin: 15px 0 15px 15px;
+    }
+}
