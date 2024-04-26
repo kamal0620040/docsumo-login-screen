@@ -1,0 +1,28 @@
+@use '../../variable.scss' as *;
+
+.link{
+    .link--normal{
+        text-decoration: none;
+        color: black;
+        font-size: 14px;
+        line-height: 1.7;
+        
+        &:hover{
+            text-decoration: underline;
+            text-decoration-color: $hover-color;
+            color: $hover-color;
+        }
+    }
+
+    .link--bold{
+        color: $link-blue;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover{
+            text-decoration: underline;
+            text-decoration-color: $hover-color;
+        }
+    }
+}
