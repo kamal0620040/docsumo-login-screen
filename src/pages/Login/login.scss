@@ -27,13 +27,6 @@
         width: 30%;
         background-color: white;
 
-        
-        // .login__container__heading{
-        //     color: $black-color;
-        //     font-size: 24px;
-        //     font-weight: 700;
-        // }
-
         .login__container__heading{
             width: 100%;
             margin-bottom: 16px;
@@ -48,7 +41,6 @@
             display: flex;
             gap: 15px;
             width: 100%;
-            // background-color: rebeccapurple;
         }
 
         .login__container__divider{
@@ -85,7 +77,14 @@
             .login__container__footer__signup{
                 display: flex;
                 gap: 6px;
+                align-items: center;
                 margin-top: 10px;
+
+                span{
+                    font: Lato;
+                    font-size: 17px;
+                    color: $grey;
+                }
             }
         }
     }

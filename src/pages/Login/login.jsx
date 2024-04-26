@@ -32,7 +32,7 @@ class Login extends React.Component {
                         </div>
                         
                         <div className="login__container__password">
-                            <Link text="Forget Password?" />
+                            <Link text="Forgot Password?" />
                         </div>
                         
                         <div className="login__container__button">
