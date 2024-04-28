@@ -5,7 +5,7 @@ import './input.scss';
 
 class Input extends React.Component {
     render(){
-        const { inputType, title, placeholder, handleChange, hidePassword, value, togglePasswordVisibility } = this.props;
+        const { inputType, title, placeholder, handleChange, hidePassword, value, togglePasswordVisibility, validationMessage } = this.props;
 
         return(
             <div className="input">
@@ -14,10 +14,10 @@ class Input extends React.Component {
                     inputType === 'password' ? (
                         <div className="input__container">
                             <span className="input__icon" onClick={togglePasswordVisibility}>{hidePassword ? <IoEyeOutline /> : <FaRegEyeSlash />}</span>
-                            <input className="input__box" value={value} type={hidePassword ? 'password' : 'text'} placeholder={placeholder} onChange={handleChange} />
+                            <input className={`input__box ${validationMessage ? 'input__box--red' : ''}`} value={value} type={hidePassword ? 'password' : 'text'} placeholder={placeholder} onChange={handleChange} />
                         </div>
                     ) : (
-                        <input className="input__box" value={value} type={inputType} placeholder={placeholder} onChange={handleChange} />
+                        <input className={`input__box ${validationMessage ? 'input__box--red' : ''}`} value={value} type={inputType} placeholder={placeholder} onChange={handleChange} />
                     )
                 }
             </div>

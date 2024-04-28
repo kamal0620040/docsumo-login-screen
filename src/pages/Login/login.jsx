@@ -1,22 +1,61 @@
 import React from "react";
 import './login.scss';
-import {Input, Link, Card, Divider, Button} from '../../components';
+import {Input, Link, Card, Divider, Button, Information} from '../../components';
 import { FcGoogle } from "react-icons/fc";
 import { mirosoft, logo } from "../../assets";
+import { validateEmail } from "../../utils";
 
 class Login extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            hidePassword: true
+            hidePassword: true,
+            inputDetail: {
+                email: '',
+                password: ''
+            },
+            validationMessage: {
+                email: '',
+                password: ''
+            }
         }
         this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this);
+        this.handleValidation = this.handleValidation.bind(this);
+        this.loginHandler = this.loginHandler.bind(this);
     }
 
     togglePasswordVisibility(){
         this.setState({
             hidePassword: !this.state.hidePassword
         });
+    }
+
+    handleValidation(attribute, value){
+        if(attribute === 'email') {
+            if(validateEmail(value)){
+                this.setState({ validationMessage: { ...this.state.validationMessage, email: '' }});
+            } else {
+                this.setState({ validationMessage: { ...this.state.validationMessage, email: 'Please enter a valid email address'}});
+            }
+        } else if(attribute === 'password'){
+            if(value.length > 0){
+                this.setState({ validationMessage: { ...this.state.validationMessage, password: '' }});
+            }
+        }
+    }
+
+    loginHandler(){
+        if(this.state.inputDetail.email === '' && this.state.inputDetail.password === ''){
+            this.setState({ validationMessage: { email: 'Please enter a valid email address', password: 'Please enter a password'}});
+        } else if(this.state.inputDetail.email === ''){
+            this.setState({ validationMessage: { ...this.state.validationMessage ,email: 'Please enter a valid email address'}});
+        } else if(this.state.inputDetail.password === ''){
+            this.setState({ validationMessage: { ...this.state.validationMessage ,password: 'Please enter a password'}});
+        } else{
+            if(this.state.validationMessage.email === '' && this.state.validationMessage.password === ''){
+                console.log('Proceed to login.');
+            }
+        }
     }
 
     render() {
@@ -41,8 +80,10 @@ class Login extends React.Component {
                         </div>
 
                         <div className="login__inputs">
-                            <Input inputType="email" title="Work Email" placeholder="janedoe@abc.com" handleChange={()=>{}} />
-                            <Input inputType="password" title="Password" placeholder="Enter password here.." handleChange={()=>{}} hidePassword={this.state.hidePassword} togglePasswordVisibility={this.togglePasswordVisibility} />
+                            <Input inputType="email" value={this.state.inputDetail.email} title="Work Email" placeholder="janedoe@abc.com" handleChange={(e)=>{ this.setState({ inputDetail: {...this.state.inputDetail, email: e.target.value}}); this.handleValidation('email', e.target.value);}} validationMessage={this.state.validationMessage.email} />
+                            {this.state.validationMessage.email !== '' && <Information text={this.state.validationMessage.email} type="validation-error" />}
+                            <Input inputType="password" value={this.state.inputDetail.password} title="Password" placeholder="Enter password here.." handleChange={(e)=>{this.setState({ inputDetail: {...this.state.inputDetail, password: e.target.value}}); this.handleValidation('password', e.target.value);}} hidePassword={this.state.hidePassword} validationMessage={this.state.validationMessage.password} togglePasswordVisibility={this.togglePasswordVisibility} />
+                            {this.state.validationMessage.password !== '' && <Information text={this.state.validationMessage.password} type="validation-error" />}
                         </div>
                         
                         <div className="login__password">
@@ -50,7 +91,7 @@ class Login extends React.Component {
                         </div>
                         
                         <div className="login__button">
-                            <Button btnName="Login" />
+                            <Button btnName="Login" handleClick={this.loginHandler} />
                         </div>
 
                         <div className="login__footer">

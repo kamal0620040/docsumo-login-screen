@@ -24,6 +24,14 @@
             outline: none;
             border: 1px solid black;
         }
+
+        &--red{
+            border: 1px solid $error-red;
+
+            &:hover{
+                border: 1px solid $error-red;
+            }
+        }
     }
 
     &__container{

@@ -1,0 +1,6 @@
+@use '../../variable.scss' as *;
+
+.information{
+    color: $error-red;
+    font-size: 14px;
+}
