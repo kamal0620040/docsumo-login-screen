@@ -5,6 +5,20 @@ import { FcGoogle } from "react-icons/fc";
 import { mirosoft, logo } from "../../assets";
 
 class Login extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            hidePassword: true
+        }
+        this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this);
+    }
+
+    togglePasswordVisibility(){
+        this.setState({
+            hidePassword: !this.state.hidePassword
+        });
+    }
+
     render() {
         return (
              <div className="login">
@@ -28,11 +42,11 @@ class Login extends React.Component {
 
                         <div className="login__container__inputs">
                             <Input inputType="email" title="Work Email" placeholder="janedoe@abc.com" handleChange={()=>{}} />
-                            <Input inputType="password" title="Password" placeholder="Enter password here.." handleChange={()=>{}} hidePassword />
+                            <Input inputType="password" title="Password" placeholder="Enter password here.." handleChange={()=>{}} hidePassword={this.state.hidePassword} togglePasswordVisibility={this.togglePasswordVisibility} />
                         </div>
                         
                         <div className="login__container__password">
-                            <Link text="Forgot Password?" />
+                            <Link text="Forgot Password?" className='login__link' />
                         </div>
                         
                         <div className="login__container__button">
