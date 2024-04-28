@@ -27,35 +27,35 @@ class Login extends React.Component {
                 </div>
 
                 <div className="login__container">
-                        <div className="login__container__heading">
+                        <div className="login__heading">
                             <h1>Login to your Docsumo account</h1>
                         </div>
 
-                        <div className="login__container__cards">
+                        <div className="login__cards">
                             <Card text="Sign in with Google" icon={<FcGoogle size={25} />} />
                             <Card text="Sign in with Microsoft" icon={<img src={mirosoft} height={25} />} />
                         </div>
                         
-                        <div className="login__container__divider">
+                        <div className="login__divider">
                             <Divider text="OR" />
                         </div>
 
-                        <div className="login__container__inputs">
+                        <div className="login__inputs">
                             <Input inputType="email" title="Work Email" placeholder="janedoe@abc.com" handleChange={()=>{}} />
                             <Input inputType="password" title="Password" placeholder="Enter password here.." handleChange={()=>{}} hidePassword={this.state.hidePassword} togglePasswordVisibility={this.togglePasswordVisibility} />
                         </div>
                         
-                        <div className="login__container__password">
+                        <div className="login__password">
                             <Link text="Forgot Password?" className='login__link' />
                         </div>
                         
-                        <div className="login__container__button">
+                        <div className="login__button">
                             <Button btnName="Login" />
                         </div>
 
-                        <div className="login__container__footer">
+                        <div className="login__footer">
                             <Link text="Login with SSO?" isBold />
-                            <div className="login__container__footer__signup">
+                            <div className="login__signup">
                                 <span>Don't have an account?</span>
                                 <Link text="Sign Up" isBold />
                             </div>

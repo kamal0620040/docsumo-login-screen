@@ -1,7 +1,7 @@
 @use '../../variable.scss' as *;
 
 .link{
-    .link--normal{
+    &--normal{
         text-decoration: none;
         color: black;
         font-size: 14px;
@@ -14,7 +14,7 @@
         }
     }
 
-    .link--bold{
+    &--bold{
         color: $link-blue;
         font-size: 16px;
         font-weight: 600;

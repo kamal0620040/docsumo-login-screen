@@ -13,7 +13,7 @@ class Input extends React.Component {
                 {
                     inputType === 'password' ? (
                         <div className="input__container">
-                            <span className="input__container__icon" onClick={togglePasswordVisibility}>{hidePassword ? <IoEyeOutline /> : <FaRegEyeSlash />}</span>
+                            <span className="input__icon" onClick={togglePasswordVisibility}>{hidePassword ? <IoEyeOutline /> : <FaRegEyeSlash />}</span>
                             <input className="input__box" value={value} type={hidePassword ? 'password' : 'text'} placeholder={placeholder} onChange={handleChange} />
                         </div>
                     ) : (

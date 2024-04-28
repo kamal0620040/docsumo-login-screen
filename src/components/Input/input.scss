@@ -1,14 +1,14 @@
 @use '../../variable.scss' as *;
 
 .input{
-    .input__heading{
+    &__heading{
         color: #181818cc;
         font-size: 14px;
         margin-bottom : 8px;
         line-height: 1.2;
     }
 
-    .input__box{
+    &__box{
         box-sizing: border-box;
         padding: 11px 16px;
         width: 100%;
@@ -26,12 +26,12 @@
         }
     }
 
-    .input__container{
+    &__container{
         position: relative;
         width: 100%;
     }
 
-    .input__container__icon{
+    &__icon{
         display: flex;
         align-items: center;
         position: absolute;

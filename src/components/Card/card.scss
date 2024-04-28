@@ -10,11 +10,11 @@
     width: 100%;
     cursor: pointer;
 
-    .card__icon{
+    &__icon{
         margin-right: 8px;
     }
 
-    .card__text{
+    &__text{
         font-size: 15px;
         margin-bottom: 3.3px;
     }
