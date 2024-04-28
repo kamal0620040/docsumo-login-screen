@@ -97,7 +97,7 @@ class Login extends React.Component {
                         <div className="login__footer">
                             <Link text="Login with SSO?" isBold />
                             <div className="login__signup">
-                                <span>Don't have an account?</span>
+                                <span>{"Don't have an account?"}</span>
                                 <Link text="Sign Up" isBold />
                             </div>
                         </div>
