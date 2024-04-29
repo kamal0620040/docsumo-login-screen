@@ -4,6 +4,10 @@ import {Input, Link, Card, Divider, Button, Information} from '../../components'
 import { FcGoogle } from "react-icons/fc";
 import { mirosoft, logo } from "../../assets";
 import { validateEmail } from "../../utils";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { setUser, startValidator } from "../../actions";
+import { Navigate } from "react-router-dom";
 
 class Login extends React.Component {
     constructor(props){
@@ -19,9 +23,14 @@ class Login extends React.Component {
                 password: ''
             }
         }
+        this.runFunctionBeforeMount();
         this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this);
         this.handleValidation = this.handleValidation.bind(this);
         this.loginHandler = this.loginHandler.bind(this);
+    }
+
+    runFunctionBeforeMount() {
+        this.props.actions.setUser();
     }
 
     togglePasswordVisibility(){
@@ -54,6 +63,9 @@ class Login extends React.Component {
         } else{
             if(this.state.validationMessage.email === '' && this.state.validationMessage.password === ''){
                 console.log('Proceed to login.');
+                this.props.actions.startValidator(this.state.inputDetail);
+                console.log(this.props.isProcessing);
+                console.log(this.props.isValidated);
             }
         }
     }
@@ -92,6 +104,11 @@ class Login extends React.Component {
                         
                         <div className="login__button">
                             <Button btnName="Login" handleClick={this.loginHandler} />
+                            {/* {this.props.isProcessing ? "Processing" : ""}
+                            {this.props.isValidated ? "Validated" : ""}
+                            {this.props.isLoginProcessing ? "Login Processing" : ""}
+                            {this.props.isLoggedIn ? "Logged In" : ""} */}
+                            {this.props.isLoggedIn && <Navigate to='/' replace={true}/>}
                         </div>
 
                         <div className="login__footer">
@@ -108,4 +125,25 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators({
+            startValidator,
+            setUser,
+        }, dispatch)
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        isProcessing: state.loginValidator.isProcessing,
+        isValidated: state.loginValidator.isValidated,
+        validationData: state.loginValidator.validationData,
+        
+        isLoginProcessing: state.login.isLoginProcessing,
+        loginData: state.login.loginData,
+        isLoggedIn: state.login.isLoggedIn,
+    };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login);
