@@ -89,3 +89,33 @@
         }
     }
 }
+
+@media only screen and (max-width: 1024px) {
+    .login{
+        // overflow: scroll;
+        
+        &__container{
+            width: 450px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        &__logo{
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+        }
+
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .login{
+        height: 100vh;
+        width: 576px;
+        
+        &__container{
+            margin-top: 60px;
+        }
+    }
+}
