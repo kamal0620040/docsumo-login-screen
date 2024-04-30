@@ -21,7 +21,8 @@ class Login extends React.Component {
             validationMessage: {
                 email: '',
                 password: ''
-            }
+            },
+            showValidationMessageBox: false
         }
         this.runFunctionBeforeMount();
         this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this);
@@ -64,8 +65,7 @@ class Login extends React.Component {
             if(this.state.validationMessage.email === '' && this.state.validationMessage.password === ''){
                 console.log('Proceed to login.');
                 this.props.actions.startValidator(this.state.inputDetail);
-                console.log(this.props.isProcessing);
-                console.log(this.props.isValidated);
+                this.setState({showValidationMessageBox: true});
             }
         }
     }
@@ -81,6 +81,12 @@ class Login extends React.Component {
                         <div className="login__heading">
                             <h1>Login to your Docsumo account</h1>
                         </div>
+                        
+                        {this.state.showValidationMessageBox && this.props.validationData?.message && !this.props.isProcessing &&
+                         <div className="login__validationMessage">
+                            <Information text={this.props.validationData?.message} type="validation-message" />
+                         </div>
+                         }
 
                         <div className="login__cards">
                             <Card text="Sign in with Google" icon={<FcGoogle size={25} />} />
@@ -92,9 +98,9 @@ class Login extends React.Component {
                         </div>
 
                         <div className="login__inputs">
-                            <Input inputType="email" value={this.state.inputDetail.email} title="Work Email" placeholder="janedoe@abc.com" handleChange={(e)=>{ this.setState({ inputDetail: {...this.state.inputDetail, email: e.target.value}}); this.handleValidation('email', e.target.value);}} validationMessage={this.state.validationMessage.email} />
+                            <Input inputType="email" value={this.state.inputDetail.email} title="Work Email" placeholder="janedoe@abc.com" handleChange={(e)=>{ this.setState({ inputDetail: {...this.state.inputDetail, email: e.target.value}}); this.handleValidation('email', e.target.value); this.setState({showValidationMessageBox: false});}} validationMessage={this.state.validationMessage.email} />
                             {this.state.validationMessage.email !== '' && <Information text={this.state.validationMessage.email} type="validation-error" />}
-                            <Input inputType="password" value={this.state.inputDetail.password} title="Password" placeholder="Enter password here.." handleChange={(e)=>{this.setState({ inputDetail: {...this.state.inputDetail, password: e.target.value}}); this.handleValidation('password', e.target.value);}} hidePassword={this.state.hidePassword} validationMessage={this.state.validationMessage.password} togglePasswordVisibility={this.togglePasswordVisibility} />
+                            <Input inputType="password" value={this.state.inputDetail.password} title="Password" placeholder="Enter password here.." handleChange={(e)=>{this.setState({ inputDetail: {...this.state.inputDetail, password: e.target.value}}); this.handleValidation('password', e.target.value); this.setState({showValidationMessageBox: false});}} hidePassword={this.state.hidePassword} validationMessage={this.state.validationMessage.password} togglePasswordVisibility={this.togglePasswordVisibility} />
                             {this.state.validationMessage.password !== '' && <Information text={this.state.validationMessage.password} type="validation-error" />}
                         </div>
                         

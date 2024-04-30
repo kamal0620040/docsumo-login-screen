@@ -38,6 +38,10 @@
         }
     }
 
+    &__validationMessage{
+        width: 100%;
+    }
+
     &__cards{
         display: flex;
         gap: 15px;
