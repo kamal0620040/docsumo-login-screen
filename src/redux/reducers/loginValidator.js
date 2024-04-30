@@ -2,7 +2,7 @@ import * as types from '../../actions/types';
 
 const initialState = {
     isProcessing: false,
-    validationData: undefined,
+    validationData: {},
     isValidated: false
 };
 
@@ -35,7 +35,7 @@ const loginValidator = (state = initialState, action) => {
                 ...state,
                 isProcessing: false,
                 isValidated: false,
-                validationData: undefined,
+                validationData: action.payload,
             };
         
         default:
