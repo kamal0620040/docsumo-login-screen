@@ -16,4 +16,20 @@
     &:hover{
         background-color: #344bfc;
     }
+
+    &__spinner{
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        align-items: center;
+    }
+}
+
+.button--disabled{
+    background-color: $faint-blue;
+
+    &:hover{
+        background-color: $faint-blue;
+        cursor: default;
+    }
 }

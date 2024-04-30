@@ -103,7 +103,7 @@ class Login extends React.Component {
                         </div>
                         
                         <div className="login__button">
-                            <Button btnName="Login" handleClick={this.loginHandler} />
+                            <Button btnName="Login" handleClick={this.loginHandler} showSpinner={(this.props.isProcessing) || (this.props.isValidated && this.props.isLoginProcessing)} />
                             {/* {this.props.isProcessing ? "Processing" : ""}
                             {this.props.isValidated ? "Validated" : ""}
                             {this.props.isLoginProcessing ? "Login Processing" : ""}
