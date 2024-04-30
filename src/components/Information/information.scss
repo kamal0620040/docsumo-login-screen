@@ -4,3 +4,16 @@
     color: $error-red;
     font-size: 14px;
 }
+
+.validationMessage{
+    box-sizing: border-box;
+    background: $error-box-background;
+    border: 1px solid $border-red;
+    padding: 7px 12px;
+    font-size: 12px;
+    font: normal normal 12px/1.16 Lato,sans-serif;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: -15px;
+    margin-bottom: 15px;
+}

@@ -6,7 +6,7 @@ class Information extends React.Component{
         const {text, type} = this.props;
 
         return (
-             <div className={`information ${type === 'validation-error' ? 'validationError' : ''}`}>{text}</div>
+             <div className={`information ${type === 'validation-error' ? 'validationError' : 'validationMessage'}`}>{text}</div>
         );
     }
 }
